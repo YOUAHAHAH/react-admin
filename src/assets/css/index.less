@@ -1,0 +1,151 @@
+// @import "~antd/dist/antd.css";
+// @import url("~antd/dist/antd.css");
+
+* {
+  padding: 0;
+  margin: 0;
+  /* overflow: hidden; */
+}
+
+div,
+dl,
+dt,
+dd,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+img,
+ol,
+ul,
+li,
+table,
+th,
+td,
+p,
+span,
+a {
+  border: 0;
+  transform: all 0.4 !important;
+}
+
+img,
+input {
+  border: none;
+  vertical-align: middle;
+}
+
+body {
+  /* font-family: Tahoma, Arial, Helvetica, "宋体"; */
+  /* font-size: 12px; */
+  /* text-align: center; */
+  background: #fff;
+  color: #000;
+}
+.site-layout-background {
+  margin: 24px 16px;
+  padding: 24px;
+  min-height: 280;
+  background-color: #ffffff;
+  overflow: auto;
+}
+.ant-layout-content {
+  position: relative;
+}
+.site-layout-background::-webkit-scrollbar {
+  /*滚动条整体样式*/
+  width: 7px; /*高宽分别对应横竖滚动条的尺寸*/
+  height: 4px;
+}
+.site-layout-background::-webkit-scrollbar-thumb {
+  /*滚动条里面小方块*/
+  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.2);
+}
+.site-layout-background::-webkit-scrollbar-track {
+  /*滚动条里面轨道*/
+  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  background: #f0f2f5;
+}
+
+html {
+  overflow: hidden;
+}
+ul,
+ol {
+  list-style-type: none;
+}
+
+th,
+td,
+input {
+  font-size: 14px;
+}
+/* input 占位符颜色 */
+input::-webkit-input-placeholder {
+  color: white !important;
+  opacity: 0.8;
+}
+input:-ms-input-placeholder {
+  opacity: 0.8;
+  color: white !important;
+}
+input:-moz-placeholder {
+  opacity: 0.8;
+  color: white !important;
+}
+input::-moz-placeholder {
+  opacity: 0.8;
+  color: white !important;
+}
+h3 {
+  font-size: 14px;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  background-color: transparent;
+}
+
+select {
+  border-width: 1px;
+  _zoom: 1;
+  border-style: solid;
+  padding-top: 2px;
+  font-size: 12px;
+}
+
+.clear {
+  clear: both;
+  font-size: 1px;
+  height: 0;
+  visibility: hidden;
+  line-height: 0;
+}
+
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.clearfix {
+  zoom: 1;
+}
+
+a:link,
+a:visited {
+  text-decoration: none;
+  color: #333;
+}
+/* .cell {
+  text-align: center;
+} */
+.el-popup-parent--hidden {
+  width: 100% !important;
+}
