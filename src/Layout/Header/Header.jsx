@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
-import { Layout, Dropdown, Menu, Typography } from "antd";
-import { UserOutlined, LoginOutlined } from "@ant-design/icons";
+import { loseUserToken } from "../../store/actions/userToken";
+import { createMessageAsync } from "../../store/actions/Message";
+import { Layout, Dropdown, Menu, Typography, Badge, Tooltip } from "antd";
+import { UserOutlined, LoginOutlined, BellOutlined } from "@ant-design/icons";
 import "./Header.less";
 import avatar from "../../assets/img/bg.jpg";
 
@@ -19,6 +21,10 @@ const Header = (props) => {
       localStorage.removeItem("react-token");
       localStorage.removeItem("react-userInfo");
     }
+  };
+
+  const getUnreadMsg = () => {
+    navigate("/Message/MessageList");
   };
 
   const menu = (
@@ -43,8 +49,34 @@ const Header = (props) => {
     />
   );
 
+  useEffect(() => {
+    props.getMessage();
+  }, []);
+
   return (
     <Header className="site-layout-background">
+      <div
+        style={{ marginRight: "10px", cursor: "pointer" }}
+        onClick={getUnreadMsg}
+      >
+        <Tooltip
+          placement="bottomLeft"
+          title={
+            props.Message > 0 ? props.Message + "条未读消息" : "暂无未读消息"
+          }
+        >
+          <Badge
+            dot={props.Message > 0 ? true : false}
+            style={{ top: "5px", right: "5px" }}
+          >
+            <BellOutlined
+              style={{
+                fontSize: 24,
+              }}
+            />
+          </Badge>
+        </Tooltip>
+      </div>
       <Dropdown overlay={menu} placement="bottomRight">
         <Typography.Link>
           <img
@@ -64,14 +96,14 @@ const Header = (props) => {
   );
 };
 
-// 将 token 销毁
-const mapDispatchToProps = (dispatch) => {
-  return {
-    loseToken() {
-      const action = { type: "loseUserToken" };
-      dispatch(action);
-    },
-  };
-};
-
-export default connect(null, mapDispatchToProps)(Header);
+export default connect(
+  (state) => ({
+    info: state.userInfo,
+    token: state.userToken,
+    Message: state.Message,
+  }),
+  {
+    getMessage: createMessageAsync,
+    loseToken: loseUserToken,
+  }
+)(Header);

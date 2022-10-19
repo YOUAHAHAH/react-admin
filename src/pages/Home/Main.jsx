@@ -38,7 +38,7 @@ const countNum = (num1, num2, pic) => {
 
 const date = new Date().getHours();
 
-export default function Main() {
+const Main = (props) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -121,4 +121,6 @@ export default function Main() {
       </QueueAnim>
     </>
   );
-}
+};
+
+export default Main;

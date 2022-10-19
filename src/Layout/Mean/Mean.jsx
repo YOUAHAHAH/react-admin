@@ -109,7 +109,7 @@ export default function Mean() {
         style={{ padding: collapsed ? "0 calc(50% - 16px / 2)" : "24px" }}
       >
         <AntDesignOutlined />
-        <p style={{ display: collapsed ? "none" : "" }}>ADMIN</p>
+        <p style={{ display: collapsed ? "none" : "" }}>ADMINR</p>
       </div>
       <Menu
         mode="inline"

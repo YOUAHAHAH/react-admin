@@ -1,11 +1,13 @@
 import React, { useRef, useState, useCallback, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
+import { createUserToken } from "../../store/actions/userToken.js";
+import { createUserInfoAsync } from "../../store/actions/userInfo.js";
 import { Button, Checkbox, Form, Input, message, Typography } from "antd";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import QueueAnim from "rc-queue-anim";
 import { loginUser, tokenGetInfo } from "../../api/api";
-import getToken from "../../utils/getToken";
+// import getToken from "../../utils/getToken";
 import "./Login.less";
 import bg from "../../assets/img/bg.jpg";
 
@@ -28,8 +30,8 @@ const Login = (props) => {
           const { code, data, msg } = res;
           if (code === 200) {
             localStorage.setItem("react-token", data.token);
-            props.userToken();
-            props.userInfo();
+            props.userToken(data.token);
+            props.userInfo(data.token);
             localStorage.setItem("react-userInfo", JSON.stringify(data));
             message.success(msg);
             setLoadings(false);
@@ -141,23 +143,10 @@ const Login = (props) => {
   );
 };
 
-// 将 token 存入 reducer
-const mapDispatchToProps = (dispatch) => {
-  return {
-    userToken() {
-      const action = { type: "getUserToken" };
-      dispatch(action);
-    },
-    userInfo() {
-      tokenGetInfo({ token: getToken() }).then((res) => {
-        const { code, data } = res;
-        if (code === 200) {
-          const action = { type: "getUserInfo" };
-          dispatch(action);
-        }
-      });
-    },
-  };
-};
-
-export default connect(null, mapDispatchToProps)(Login);
+export default connect(
+  (state) => ({ info: state.userInfo, token: state.userToken }),
+  {
+    userToken: createUserToken,
+    userInfo: createUserInfoAsync,
+  }
+)(Login);

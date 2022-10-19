@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Button, List, message, Skeleton, Modal, Spin, Popconfirm } from "antd";
 import dayjs from "dayjs";
+import { connect } from "react-redux";
+import { createMessageAsync } from "../../store/actions/Message";
 import {
   unreadMessages,
   TaggedMessage,
@@ -14,7 +16,7 @@ import {
 } from "../../api/api";
 import "./Message.less";
 
-export default function RecyclingStation(props) {
+const RecyclingStation = (props) => {
   const [loading, setLoading] = useState(true);
   const [list, setList] = useState([]);
   const [state, setState] = useState(props.state);
@@ -54,6 +56,7 @@ export default function RecyclingStation(props) {
   const UnreadM = (id) => {
     TaggedMessage({ id }).then((res) => {
       stateApi(res);
+      props.getMessage(); // redux 未读消息个数
     });
   };
 
@@ -98,6 +101,7 @@ export default function RecyclingStation(props) {
       if (code === 200) {
         message.success(msg);
         setNum((num) => num + 1);
+        props.getMessage(); // redux 未读消息个数
       } else {
         message.error(msg);
       }
@@ -194,7 +198,13 @@ export default function RecyclingStation(props) {
           )}
         />
         <Popconfirm
-          title="Are you sure to delete this task?"
+          title={
+            state === 1
+              ? "您确定清空消息吗？"
+              : state === 2
+              ? "您确定全部删除吗？"
+              : "您确定清空回收站吗？"
+          }
           onConfirm={confirm}
           onCancel={() => {
             message.success("取消成功！");
@@ -244,4 +254,8 @@ export default function RecyclingStation(props) {
       </Modal>
     </>
   );
-}
+};
+
+export default connect(null, {
+  getMessage: createMessageAsync,
+})(RecyclingStation);

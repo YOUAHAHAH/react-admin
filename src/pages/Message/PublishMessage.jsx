@@ -20,6 +20,7 @@ export default function PublishMessage() {
   const [value, setValue] = useState([]);
   const [treeD, setTreeD] = useState([]);
   const [treePosts, setTreePosts] = useState();
+  const [loadings, setLoadings] = useState(false);
 
   const onChange = (newValue) => {
     setValue(newValue);
@@ -28,10 +29,14 @@ export default function PublishMessage() {
   const publicM = () => {
     form.validateFields().then((values) => {
       publicMessage({ values, treePosts }).then((res) => {
+        setLoadings(true);
         const { code, msg } = res;
         if (code === 200) {
-          message.success(msg);
-          form.resetFields();
+          setTimeout(() => {
+            message.success(msg);
+            form.resetFields();
+            setLoadings(false);
+          }, 1000);
         } else {
           message.error(msg);
         }
@@ -154,7 +159,7 @@ export default function PublishMessage() {
               offset: 8,
             }}
           >
-            <Button type="primary" onClick={publicM}>
+            <Button type="primary" onClick={publicM} loading={loadings}>
               发布
             </Button>
           </Form.Item>

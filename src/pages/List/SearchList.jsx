@@ -18,7 +18,6 @@ import {
   EditOutlined,
   DeleteOutlined,
   FolderAddOutlined,
-  Loading3QuartersOutlined,
   SettingOutlined,
 } from "@ant-design/icons";
 import dayjs from "dayjs";
@@ -242,21 +241,23 @@ export default function SearchList() {
 
   // 搜索查询
   const onFinish = (values) => {
-    console.log(values);
-    // if (!values.content && !values.title) {
-    //   return notification.error({
-    //     message: "搜索的标题或内容不能为空",
-    //     placement: "topLeft",
-    //     duration: 2,
-    //   });
-    // }
-    // setFormValue(values);
-    // getSearchTableList(
-    //   values,
-    //   searchPagination.current,
-    //   searchPagination.pageSize,
-    //   getChecked
-    // );
+    if (!values.content && !values.title) {
+      return (
+        getTableList(pagination.current, pagination.pageSize, getChecked),
+        notification.error({
+          message: "搜索的标题或内容不能为空",
+          placement: "topLeft",
+          duration: 2,
+        })
+      );
+    }
+    setFormValue(values);
+    getSearchTableList(
+      values,
+      searchPagination.current,
+      searchPagination.pageSize,
+      getChecked
+    );
   };
 
   // 提交控制setNum进行更新
@@ -331,15 +332,6 @@ export default function SearchList() {
               >
                 搜索
               </Button>
-              {/* <Button
-                htmlType="submit"
-                onClick={() => {
-                  location.reload();
-                }}
-              >
-                清空并刷新
-                <Loading3QuartersOutlined />
-              </Button> */}
             </Form.Item>
           </Form>
 
