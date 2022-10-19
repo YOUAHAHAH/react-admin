@@ -4,7 +4,7 @@ import { Layout } from "antd";
 import { Outlet } from "react-router-dom";
 import AppHeader from "./Layout/Header/Header";
 import AppNavigation from "./Layout/Navigation/Navigation";
-import AppFooter from "./Layout/Footer/Footer";
+// import AppFooter from "./Layout/Footer/Footer";
 import AppMean from "./Layout/Mean/Mean";
 
 const { Content } = Layout;
@@ -32,17 +32,22 @@ const App = () => {
   }, []);
 
   return (
-    <Layout style={{ height: "100vh" }}>
-      <AppMean />
-      <Layout className="site-layout">
-        <AppHeader />
-        <AppNavigation />
-        <Content className="site-layout-background">
-          <Outlet />
-        </Content>
-        {/* <AppFooter /> */}
+    <>
+      <Layout style={{ height: "100vh" }}>
+        <AppMean />
+        <Layout className="site-layout">
+          <AppHeader />
+          <AppNavigation />
+          <Content
+            className="site-layout-background"
+            style={{ margin: "10px" }}
+          >
+            <Outlet />
+          </Content>
+          {/* <AppFooter /> */}
+        </Layout>
       </Layout>
-    </Layout>
+    </>
   );
 };
 

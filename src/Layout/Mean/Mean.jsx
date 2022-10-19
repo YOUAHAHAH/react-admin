@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Menu, Layout } from "antd";
-import Icon, {
+import {
   AntDesignOutlined,
   HomeOutlined,
   BulbOutlined,
+  SettingOutlined,
   UnorderedListOutlined,
   UserOutlined,
   SelectOutlined,
@@ -39,7 +40,8 @@ function getItem(label, key, icon, children) {
 
 const items = [
   getItem("首页", "Home", <HomeOutlined />, [
-    getItem("关于ADMIN", "AboutHome", <BulbOutlined />),
+    getItem("关于ADMINR", "AboutHome", <BulbOutlined />),
+    getItem("技术核心", "Technology", <SettingOutlined />),
   ]),
   getItem("列表", "List", <UnorderedListOutlined />, [
     getItem("用户列表", "UserList", <UserOutlined />),

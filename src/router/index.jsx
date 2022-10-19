@@ -24,6 +24,7 @@ import Login from "../Layout/Login/Login";
 import Reg from "../Layout/Login/Reg";
 import App from "../App";
 import Main from "../pages/Home/Main";
+import Technology from "../pages/Home/Technology";
 import UserList from "../pages/List/UserList";
 import SearchList from "../pages/List/SearchList";
 import CardList from "../pages/List/CardList";
@@ -58,6 +59,7 @@ const BaseRouter = () => (
       >
         <Route path="/" index element={<Main />}></Route>
         <Route path="/Home/AboutHome" element={<Main />}></Route>
+        <Route path="/Home/Technology" element={<Technology />}></Route>
         <Route path="/List/UserList" element={<UserList />}></Route>
         <Route path="/List/SearchList" element={<SearchList />}></Route>
         <Route path="/List/CardList" element={<CardList />}></Route>
