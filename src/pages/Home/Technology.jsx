@@ -1,9 +1,9 @@
 import React from "react";
 import { Card, Typography, Table, Tag } from "antd";
 import QueueAnim from "rc-queue-anim";
-import "./Main.less";
+import "./Technology.less";
 
-const { Paragraph, Link } = Typography;
+const { Link } = Typography;
 
 const columns = [
   {
@@ -146,80 +146,83 @@ export default function Technology() {
         className="demo-content"
         animConfig={[{ opacity: [1, 0], translateY: [0, 50] }]}
       >
-        <Card
+        <div
           key="a"
-          title="技术栈"
           style={{
             width: "100%",
+            height: "100%",
+            border: "1px solid #f0f0f0",
+            paddingLeft: " 40px",
+            paddingTop: "20px",
           }}
         >
-          <Paragraph>
-            <ul style={{ fontSize: "18px" }}>
-              <li>
-                开发工具：
-                <Link href="https://code.visualstudio.com/" target="_blank">
-                  Visual Studio Code
-                </Link>
-              </li>
-              <li>
-                编程语言：
-                <Link
-                  href="https://developer.mozilla.org/zh-CN/docs/learn/JavaScript"
-                  target="_blank"
-                >
-                  JavaScript
-                </Link>
-              </li>
-              <li>
-                构建工具：
-                <Link href="https://vitejs.cn/" target="_blank">
-                  Vite 3.x
-                </Link>
-              </li>
-              <li>
-                前端框架：
-                <Link href="https://react.docschina.org/" target="_blank">
-                  react 18.x
-                </Link>
-              </li>
-              <li>
-                路由工具：
-                <Link
-                  href="https://serializedowen.github.io/docs/react-router-dom/%E5%90%91%E5%AF%BC/%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B"
-                  target="_blank"
-                >
-                  react-router-dom 6.x
-                </Link>
-              </li>
-              <li>
-                状态管理：
-                <Link
-                  href="https://www.redux.org.cn/docs/react-redux/"
-                  target="_blank"
-                >
-                  react-redux 8.x
-                </Link>
-              </li>
-              <li>
-                UI 框架：
-                <Link
-                  href="https://ant-design.gitee.io/docs/react/introduce-cn"
-                  target="_blank"
-                >
-                  antd 4.x
-                </Link>
-              </li>
-              <li>
-                CSS 预编译：
-                <Link href="https://less.bootcss.com/" target="_blank">
-                  less 4.x
-                </Link>
-              </li>
-            </ul>
-          </Paragraph>
-        </Card>
+          <b style={{ display: "block", marginBottom: "10px" }}>技术栈</b>
+          <ul style={{ fontSize: "18px" }}>
+            <li>
+              开发工具：
+              <Link href="https://code.visualstudio.com/" target="_blank">
+                Visual Studio Code
+              </Link>
+            </li>
+            <li>
+              编程语言：
+              <Link
+                href="https://developer.mozilla.org/zh-CN/docs/learn/JavaScript"
+                target="_blank"
+              >
+                JavaScript
+              </Link>
+            </li>
+            <li>
+              构建工具：
+              <Link href="https://vitejs.cn/" target="_blank">
+                Vite 3.x
+              </Link>
+            </li>
+            <li>
+              前端框架：
+              <Link href="https://react.docschina.org/" target="_blank">
+                react 18.x
+              </Link>
+            </li>
+            <li>
+              路由工具：
+              <Link
+                href="https://serializedowen.github.io/docs/react-router-dom/%E5%90%91%E5%AF%BC/%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B"
+                target="_blank"
+              >
+                react-router-dom 6.x
+              </Link>
+            </li>
+            <li>
+              状态管理：
+              <Link
+                href="https://www.redux.org.cn/docs/react-redux/"
+                target="_blank"
+              >
+                react-redux 8.x
+              </Link>
+            </li>
+            <li>
+              UI 框架：
+              <Link
+                href="https://ant-design.gitee.io/docs/react/introduce-cn"
+                target="_blank"
+              >
+                antd 4.x
+              </Link>
+            </li>
+            <li>
+              CSS 预编译：
+              <Link href="https://less.bootcss.com/" target="_blank">
+                less 4.x
+              </Link>
+            </li>
+          </ul>
+        </div>
 
         <Card
+          className="TecCard"
           key="b"
           title="生产环境依赖"
           style={{
@@ -237,6 +240,7 @@ export default function Technology() {
         </Card>
 
         <Card
+          className="TecCard"
           key="c"
           title="开发环境依赖"
           style={{

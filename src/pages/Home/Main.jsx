@@ -90,6 +90,7 @@ const Main = (props) => {
 
         <div className="card" key="a">
           <Card
+            hoverable
             loading={loading}
             title="访问数"
             extra={<Tag color="cyan">月</Tag>}
@@ -97,6 +98,7 @@ const Main = (props) => {
             {countNum(2000, 6000, shizhong)}
           </Card>
           <Card
+            hoverable
             loading={loading}
             title="成交额"
             extra={<Tag color="volcano">月</Tag>}
@@ -104,6 +106,7 @@ const Main = (props) => {
             {countNum(50000, 500000, card)}
           </Card>
           <Card
+            hoverable
             loading={loading}
             title="下载数"
             extra={<Tag color="purple">周</Tag>}
@@ -111,6 +114,7 @@ const Main = (props) => {
             {countNum(8000, 18000, xiazai)}
           </Card>
           <Card
+            hoverable
             loading={loading}
             title="成交数"
             extra={<Tag color="geekblue">年</Tag>}

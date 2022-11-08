@@ -96,4 +96,62 @@ const ResultSvg = () => (
 );
 const ResultIcon = (props) => <Icon component={ResultSvg} {...props} />;
 
-export { PbulicMessageIcon, BaiDuMapIcon, GaoDeMapIcon, ResultIcon };
+// 权限Icon
+const PermissionsSvg = () => (
+  <svg
+    t="1667445856229"
+    className="icon"
+    viewBox="0 0 1024 1024"
+    version="1.1"
+    xmlns="http://www.w3.org/2000/svg"
+    p-id="2764"
+    width="15"
+    height="15"
+  >
+    <path
+      d="M814.08 366.08h-76.8v-76.8c0-124.416-100.85888-225.28-225.28-225.28s-225.28 100.85888-225.28 225.28v76.8H209.92c-56.55552 0-102.4 45.84448-102.4 102.4v389.12c0 56.55552 45.84448 102.4 102.4 102.4h604.16c56.55552 0 102.4-45.84448 102.4-102.4v-389.12c0-56.55552-45.84448-102.4-102.4-102.4z m-455.68-76.8c0-84.69504 68.90496-153.6 153.6-153.6s153.6 68.90496 153.6 153.6v76.8H358.4v-76.8z m486.4 568.32c0 16.93696-13.77792 30.72-30.72 30.72H209.92c-16.94208 0-30.72-13.78304-30.72-30.72v-389.12c0-16.93696 13.77792-30.72 30.72-30.72h604.16c16.94208 0 30.72 13.78304 30.72 30.72v389.12z"
+      fill="#2c2c2c"
+      p-id="2765"
+    ></path>
+    <path
+      d="M512 550.4a35.84 35.84 0 0 0-35.84 35.84v174.08a35.84 35.84 0 1 0 71.68 0v-174.08a35.84 35.84 0 0 0-35.84-35.84z"
+      fill="#2c2c2c"
+      p-id="2766"
+    ></path>
+  </svg>
+);
+const PermissionsIcon = (props) => (
+  <Icon component={PermissionsSvg} {...props} />
+);
+
+//
+const PermissionsSvg1 = () => (
+  <svg
+    t="1667446041813"
+    className="icon"
+    viewBox="0 0 1024 1024"
+    version="1.1"
+    xmlns="http://www.w3.org/2000/svg"
+    p-id="3780"
+    width="15"
+    height="15"
+  >
+    <path
+      d="M830.4 513.6C786.4 469.6 729.6 448 672 448c-48.8 0-96.8 16-136.8 47.2L277.6 237.6 384 131.2l-29.6-29.6L224 184 128.8 88.8l-44 44 406.4 406.4c-64.8 88-56.8 212 22.4 291.2 44 44 100.8 65.6 158.4 65.6s114.4-21.6 158.4-65.6c87.2-87.2 87.2-229.6 0-316.8z m-45.6 271.2c-30.4 30.4-70.4 47.2-112.8 47.2-42.4 0-83.2-16.8-112.8-47.2-62.4-62.4-62.4-164 0-226.4C588.8 528.8 629.6 512 672 512s83.2 16.8 112.8 47.2c62.4 62.4 62.4 163.2 0 225.6z"
+      p-id="3781"
+      fill="#2c2c2c"
+    ></path>
+  </svg>
+);
+const PermissionsIcon1 = (props) => (
+  <Icon component={PermissionsSvg1} {...props} />
+);
+
+export {
+  PbulicMessageIcon,
+  BaiDuMapIcon,
+  GaoDeMapIcon,
+  ResultIcon,
+  PermissionsIcon,
+  PermissionsIcon1,
+};

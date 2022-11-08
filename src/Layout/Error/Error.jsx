@@ -15,7 +15,7 @@ export default function Error() {
         <Button
           type="primary"
           onClick={() => {
-            navigate("/");
+            navigate("/Home/AboutHome");
           }}
         >
           Go Back

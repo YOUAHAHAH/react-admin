@@ -74,6 +74,21 @@ const tabsIndex = [
     label: "错误页面500",
     path: "/Result/Result500",
   },
+  {
+    key: "15",
+    label: "页面权限",
+    path: "/Permissions/PermissionsPage",
+  },
+  {
+    key: "16",
+    label: "权限测试页面A",
+    path: "/Permissions/PermissionsA",
+  },
+  {
+    key: "17",
+    label: "权限测试页面T",
+    path: "/Permissions/PermissionsT",
+  },
 ];
 
 export default function Navigation() {

@@ -18,6 +18,7 @@ import {
   CloseOutlined,
   QuestionOutlined,
   ExclamationOutlined,
+  ProfileOutlined,
 } from "@ant-design/icons";
 import "./Mean.less";
 import {
@@ -25,49 +26,74 @@ import {
   BaiDuMapIcon,
   GaoDeMapIcon,
   ResultIcon,
+  PermissionsIcon,
+  PermissionsIcon1,
 } from "../../components/Icon/Icon";
+import getToken from "../../utils/getToken.jsx";
 
 const { Sider } = Layout;
 
-function getItem(label, key, icon, children) {
-  return {
-    label,
-    key,
-    icon,
-    children,
-  };
-}
-
-const items = [
-  getItem("首页", "Home", <HomeOutlined />, [
-    getItem("关于ADMINR", "AboutHome", <BulbOutlined />),
-    getItem("技术核心", "Technology", <SettingOutlined />),
-  ]),
-  getItem("列表", "List", <UnorderedListOutlined />, [
-    getItem("用户列表", "UserList", <UserOutlined />),
-    getItem("查询列表", "SearchList", <SelectOutlined />),
-    getItem("卡片列表", "CardList", <CreditCardOutlined />),
-    getItem("分布列表", "StepsList", <SendOutlined />),
-  ]),
-  getItem("图表", "Charts", <AreaChartOutlined />, [
-    getItem("百度地图", "BaiDuMap", <BaiDuMapIcon />),
-    getItem("高德地图", "GaoDeMap", <GaoDeMapIcon />),
-    getItem("折线图", "EchartsLine", <BarChartOutlined />),
-  ]),
-  getItem("消息", "Message", <MailOutlined />, [
-    getItem("消息列表", "MessageList", <MessageOutlined />),
-    getItem("发布消息", "PublishMessage", <PbulicMessageIcon />),
-  ]),
-  getItem("结果", "Result", <ResultIcon />, [
-    getItem("403", "Result403", <CloseOutlined />),
-    getItem("404", "Result404", <QuestionOutlined />),
-    getItem("500", "Result500", <ExclamationOutlined />),
-  ]),
-];
-
-const rootSubmenuKeys = ["Home", "List", "Charts", "Message", "Result"];
-
 export default function Mean() {
+  function getItem(label, key, icon, children) {
+    return {
+      label,
+      key,
+      icon,
+      children,
+    };
+  }
+
+  // 权限展示
+  const PerItem = () => {
+    if (getToken() === "456") {
+      return [getItem("权限测试页面A", "PermissionsA", <ProfileOutlined />)];
+    } else if (getToken() === "999") {
+      return [getItem("权限测试页面T", "PermissionsT", <ProfileOutlined />)];
+    } else {
+      return null;
+    }
+  };
+
+  const items = [
+    getItem("首页", "Home", <HomeOutlined />, [
+      getItem("关于ADMINR", "AboutHome", <BulbOutlined />),
+      getItem("技术核心", "Technology", <SettingOutlined />),
+    ]),
+    getItem("列表", "List", <UnorderedListOutlined />, [
+      getItem("用户列表", "UserList", <UserOutlined />),
+      getItem("查询列表", "SearchList", <SelectOutlined />),
+      getItem("卡片列表", "CardList", <CreditCardOutlined />),
+      getItem("分布列表", "StepsList", <SendOutlined />),
+    ]),
+    getItem("图表", "Charts", <AreaChartOutlined />, [
+      getItem("百度地图", "BaiDuMap", <BaiDuMapIcon />),
+      getItem("高德地图", "GaoDeMap", <GaoDeMapIcon />),
+      getItem("折线图", "EchartsLine", <BarChartOutlined />),
+    ]),
+    getItem("消息", "Message", <MailOutlined />, [
+      getItem("消息列表", "MessageList", <MessageOutlined />),
+      getItem("发布消息", "PublishMessage", <PbulicMessageIcon />),
+    ]),
+    getItem("结果", "Result", <ResultIcon />, [
+      getItem("403", "Result403", <CloseOutlined />),
+      getItem("404", "Result404", <QuestionOutlined />),
+      getItem("500", "Result500", <ExclamationOutlined />),
+    ]),
+    getItem("权限设置", "Permissions", <PermissionsIcon1 />, [
+      getItem("页面权限", "PermissionsPage", <PermissionsIcon />),
+      PerItem()[0],
+    ]),
+  ];
+
+  const rootSubmenuKeys = [
+    "Home",
+    "List",
+    "Charts",
+    "Message",
+    "Result",
+    "Permissions",
+  ];
+
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const [current, setCurrent] = useState(
